@@ -47,37 +47,72 @@ func main() {
 
 ## Function reference
 
+Over **250 functions** across seven categories — roughly 80% of lodash's API,
+adapted idiomatically to Go generics.
+
 ### Collections & slices
 
 `Map`, `MapI`, `Filter`, `Reject`, `Reduce`, `ReduceRight`, `ForEach`,
-`ForEachI`, `Find`, `FindLast`, `FindIndex`, `FindLastIndex`, `Every`, `Some`,
-`Includes`, `IndexOf`, `LastIndexOf`, `GroupBy`, `KeyBy`, `CountBy`,
-`Partition`, `Uniq`, `UniqBy`, `Chunk`, `Flatten`, `FlattenDeep`, `Compact`,
-`Reverse`, `Zip`, `Unzip`, `Difference`, `Intersection`, `Union`, `Without`,
-`Take`, `TakeRight`, `Drop`, `DropRight`, `Sample`, `SampleN`, `Shuffle`,
-`SortBy`, `OrderBy`, `Concat`, `Fill`
+`ForEachI`, `ForEachRight`, `Find`, `FindLast`, `FindIndex`, `FindLastIndex`,
+`Every`, `Some`, `None`, `Includes`, `IndexOf`, `LastIndexOf`, `IndexOfFrom`,
+`LastIndexOfFrom`, `GroupBy`, `KeyBy`, `CountBy`, `Partition`, `Uniq`, `UniqBy`,
+`SortedUniq`, `SortedUniqBy`, `Chunk`, `Flatten`, `FlattenDeep`, `FlattenDepth`,
+`FlatMap`, `Compact`, `Reverse`, `Zip`, `ZipWith`, `Unzip`, `UnzipWith`,
+`ZipObject`, `Difference`, `DifferenceBy`, `DifferenceWith`, `Intersection`,
+`IntersectionBy`, `IntersectionWith`, `Union`, `UnionBy`, `UnionWith`, `Xor`,
+`XorBy`, `XorWith`, `Without`, `Pull`, `PullAll`, `PullAllBy`, `PullAt`,
+`Remove`, `Take`, `TakeRight`, `TakeWhile`, `TakeRightWhile`, `Drop`,
+`DropRight`, `DropWhile`, `DropRightWhile`, `Head`, `First`, `Last`, `Nth`,
+`Initial`, `Tail`, `Slice`, `Join`, `Sample`, `SampleN`, `Shuffle`, `SortBy`,
+`OrderBy`, `SortedIndex`, `SortedIndexBy`, `SortedIndexOf`, `SortedLastIndex`,
+`SortedLastIndexBy`, `SortedLastIndexOf`, `Concat`, `Fill`
 
 ### Math & numbers
 
-`Sum`, `SumBy`, `Mean`, `MeanBy`, `Min`, `MinBy`, `Max`, `MaxBy`, `Clamp`,
-`Range`, `RangeStep`, `InRange`
+`Sum`, `SumBy`, `Mean`, `MeanBy`, `Min`, `MinBy`, `Max`, `MaxBy`, `Add`,
+`Subtract`, `Multiply`, `Divide`, `Clamp`, `Round`, `Floor`, `Ceil`, `Random`,
+`RandomFloat`, `Range`, `RangeStep`, `RangeRight`, `InRange`
 
 ### Objects & maps
 
-`Keys`, `SortedKeys`, `Values`, `Entries`, `FromEntries`, `Pick`, `PickBy`,
-`Omit`, `OmitBy`, `MapKeys`, `MapValues`, `Invert`, `Merge`, `Assign`, `Get`,
-`Has`
+`Keys`, `SortedKeys`, `Values`, `Entries`, `FromEntries`, `ToPairs`,
+`FromPairs`, `ZipObject`, `Pick`, `PickBy`, `Omit`, `OmitBy`, `MapKeys`,
+`MapValues`, `Invert`, `InvertBy`, `Merge`, `MergeWith`, `Assign`, `AssignWith`,
+`Defaults`, `DefaultsDeep`, `Transform`, `ForOwn`, `FindKey`, `Size`, `Get`,
+`GetOr`, `Has`, `At`, `Result`, `Set`, `Unset`, `Update`, `ToPath`
+
+Deep-path helpers (`Get`, `Set`, `Unset`, `Update`, `Has`, `At`, `Result`)
+accept dotted **and** bracket notation over `map[string]any`, e.g.
+`Get(obj, "a.b[0].c")`.
 
 ### Strings
 
 `Words`, `CamelCase`, `PascalCase`, `SnakeCase`, `KebabCase`, `StartCase`,
-`Capitalize`, `UpperFirst`, `LowerFirst`, `Pad`, `PadStart`, `PadEnd`,
-`Truncate`, `Repeat`, `Deburr`, `Trim`, `TrimStart`, `TrimEnd`
+`LowerCase`, `UpperCase`, `ToLower`, `ToUpper`, `Capitalize`, `UpperFirst`,
+`LowerFirst`, `Pad`, `PadStart`, `PadEnd`, `Truncate`, `Repeat`, `Deburr`,
+`Trim`, `TrimStart`, `TrimEnd`, `Escape`, `Unescape`, `EscapeRegExp`, `Replace`,
+`Split`, `StartsWith`, `EndsWith`, `Template`
 
-### Functions
+### Lang & value
 
-`Once`, `Memoize`, `MemoizeBy`, `NewDebouncer` (`Debouncer`), `NewThrottler`
-(`Throttler`), `After`, `Before`
+`Clone`, `CloneDeep`, `IsEqual`, `Eq`, `IsEmpty`, `IsMatch`, `IsNil`,
+`IsPlainObject`, `IsString`, `IsBool`, `IsNumber`, `IsInteger`, `IsSlice`,
+`IsMap`, `IsError`, `IsObjectLike`, `IsNaN`, `IsFinite`, `CastArray`, `ToArray`,
+`DefaultTo`, `Gt`, `Gte`, `Lt`, `Lte`, `ToNumber`, `ToInteger`, `ToFinite`,
+`ToSafeInteger`, `ToString`, `Conforms`, `ConformsTo`
+
+### Function combinators
+
+`Curry`, `Curry3`, `Partial`, `PartialRight`, `Flow`, `FlowRight`, `Compose`,
+`Cond`, `Over`, `OverEvery`, `OverSome`, `OverArgs`, `Negate`, `Ary`, `Unary`,
+`Flip`, `Rearg`, `Spread`, `NthArg`, `Wrap`, `Once`, `Memoize`, `MemoizeBy`,
+`NewDebouncer` (`Debouncer`), `NewThrottler` (`Throttler`), `After`, `Before`
+
+### Utilities & sequences
+
+`Identity`, `Constant`, `Noop`, `Times`, `UniqueID`, `Property`, `PropertyOf`,
+`Matches`, `Attempt`, `StubArray`, `StubObject`, `StubString`, `StubTrue`,
+`StubFalse`, `Chain` (a lazy `Seq` wrapper with `Value`, `Thru` and `Tap`)
 
 ## Notes on randomness & timers
 

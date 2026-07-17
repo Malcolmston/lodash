@@ -1,7 +1,7 @@
 // Package lodash is a comprehensive, type-safe functional utility library for
 // Go, inspired by the JavaScript library lodash. It is implemented entirely
 // with the Go standard library and leans on Go 1.24 generics so that helpers
-// stay type-safe without reflection.
+// stay type-safe without external dependencies.
 //
 // All functions are pure and non-mutating unless explicitly documented
 // otherwise: they return new slices or maps rather than modifying their
@@ -13,39 +13,71 @@
 // Transform, query and reshape slices:
 //
 //	Map, MapI, Filter, Reject, Reduce, ReduceRight, ForEach, ForEachI,
-//	Find, FindLast, FindIndex, FindLastIndex, Every, Some, Includes,
-//	IndexOf, LastIndexOf, GroupBy, KeyBy, CountBy, Partition, Uniq, UniqBy,
-//	Chunk, Flatten, FlattenDeep, Compact, Reverse, Zip, Unzip, Difference,
-//	Intersection, Union, Without, Take, TakeRight, Drop, DropRight, Sample,
-//	SampleN, Shuffle, SortBy, OrderBy, Concat, Fill.
+//	ForEachRight, Find, FindLast, FindIndex, FindLastIndex, Every, Some, None,
+//	Includes, IndexOf, LastIndexOf, IndexOfFrom, LastIndexOfFrom, GroupBy,
+//	KeyBy, CountBy, Partition, Uniq, UniqBy, SortedUniq, SortedUniqBy, Chunk,
+//	Flatten, FlattenDeep, FlattenDepth, FlatMap, Compact, Reverse, Zip, ZipWith,
+//	Unzip, UnzipWith, ZipObject, Difference, DifferenceBy, DifferenceWith,
+//	Intersection, IntersectionBy, IntersectionWith, Union, UnionBy, UnionWith,
+//	Xor, XorBy, XorWith, Without, Pull, PullAll, PullAllBy, PullAt, Remove,
+//	Take, TakeRight, TakeWhile, TakeRightWhile, Drop, DropRight, DropWhile,
+//	DropRightWhile, Head, First, Last, Nth, Initial, Tail, Slice, Join, Sample,
+//	SampleN, Shuffle, SortBy, OrderBy, SortedIndex, SortedIndexBy, SortedIndexOf,
+//	SortedLastIndex, SortedLastIndexBy, SortedLastIndexOf, Concat, Fill.
 //
 // # Math and numbers
 //
-// Aggregate and constrain numeric data:
+// Aggregate, constrain and compute over numeric data:
 //
-//	Sum, SumBy, Mean, MeanBy, Min, MinBy, Max, MaxBy, Clamp, Range,
-//	RangeStep, InRange.
+//	Sum, SumBy, Mean, MeanBy, Min, MinBy, Max, MaxBy, Add, Subtract, Multiply,
+//	Divide, Clamp, Round, Floor, Ceil, Random, RandomFloat, Range, RangeStep,
+//	RangeRight, InRange.
 //
 // # Objects and maps
 //
-// Inspect and reshape maps, including nested map[string]any access:
+// Inspect and reshape maps, including nested map[string]any access with dotted
+// and bracket paths:
 //
-//	Keys, SortedKeys, Values, Entries, FromEntries, Pick, PickBy, Omit,
-//	OmitBy, MapKeys, MapValues, Invert, Merge, Assign, Get, Has.
+//	Keys, SortedKeys, Values, Entries, FromEntries, ToPairs, FromPairs,
+//	ZipObject, Pick, PickBy, Omit, OmitBy, MapKeys, MapValues, Invert, InvertBy,
+//	Merge, MergeWith, Assign, AssignWith, Defaults, DefaultsDeep, Transform,
+//	ForOwn, FindKey, Size, Get, GetOr, Has, At, Result, Set, Unset, Update,
+//	ToPath.
 //
 // # Strings
 //
-// Case conversion and formatting helpers:
+// Case conversion, formatting, escaping and templating:
 //
-//	Words, CamelCase, PascalCase, SnakeCase, KebabCase, StartCase,
-//	Capitalize, UpperFirst, LowerFirst, Pad, PadStart, PadEnd, Truncate,
-//	Repeat, Deburr, Trim, TrimStart, TrimEnd.
+//	Words, CamelCase, PascalCase, SnakeCase, KebabCase, StartCase, LowerCase,
+//	UpperCase, ToLower, ToUpper, Capitalize, UpperFirst, LowerFirst, Pad,
+//	PadStart, PadEnd, Truncate, Repeat, Deburr, Trim, TrimStart, TrimEnd,
+//	Escape, Unescape, EscapeRegExp, Replace, Split, StartsWith, EndsWith,
+//	Template.
 //
-// # Functions
+// # Lang and value helpers
 //
-// Higher-order function wrappers. Once and Memoize are fully deterministic;
-// Debouncer and Throttler manage real timers and clocks and document their
-// concurrency behavior on each type:
+// Clone, compare and interrogate arbitrary values:
 //
-//	Once, Memoize, MemoizeBy, NewDebouncer, NewThrottler, After, Before.
+//	Clone, CloneDeep, IsEqual, Eq, IsEmpty, IsMatch, IsNil, IsPlainObject,
+//	IsString, IsBool, IsNumber, IsInteger, IsSlice, IsMap, IsError,
+//	IsObjectLike, IsNaN, IsFinite, CastArray, ToArray, DefaultTo, Gt, Gte, Lt,
+//	Lte, ToNumber, ToInteger, ToFinite, ToSafeInteger, ToString, Conforms,
+//	ConformsTo.
+//
+// # Function combinators
+//
+// Compose, adapt and constrain functions:
+//
+//	Curry, Curry3, Partial, PartialRight, Flow, FlowRight, Compose, Cond, Over,
+//	OverEvery, OverSome, OverArgs, Negate, Ary, Unary, Flip, Rearg, Spread,
+//	NthArg, Wrap, Once, Memoize, MemoizeBy, NewDebouncer, NewThrottler, After,
+//	Before.
+//
+// # Utilities and sequences
+//
+// General-purpose helpers and a lazy value wrapper for method chaining:
+//
+//	Identity, Constant, Noop, Times, UniqueID, Property, PropertyOf, Matches,
+//	Attempt, StubArray, StubObject, StubString, StubTrue, StubFalse, Chain
+//	(with Value, Thru and Tap).
 package lodash

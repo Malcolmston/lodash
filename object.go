@@ -2,7 +2,6 @@ package lodash
 
 import (
 	"sort"
-	"strings"
 
 	"cmp"
 )
@@ -155,33 +154,4 @@ func Assign[K comparable, V any](dst map[K]V, sources ...map[K]V) map[K]V {
 		}
 	}
 	return dst
-}
-
-// Get retrieves a nested value from a map[string]any using a dot-separated path
-// such as "a.b.c". The second return value reports whether the full path was
-// resolved.
-func Get(m map[string]any, path string) (any, bool) {
-	if path == "" {
-		return nil, false
-	}
-	parts := strings.Split(path, ".")
-	var cur any = m
-	for _, p := range parts {
-		asMap, ok := cur.(map[string]any)
-		if !ok {
-			return nil, false
-		}
-		cur, ok = asMap[p]
-		if !ok {
-			return nil, false
-		}
-	}
-	return cur, true
-}
-
-// Has reports whether the dot-separated path resolves to a value in the nested
-// map.
-func Has(m map[string]any, path string) bool {
-	_, ok := Get(m, path)
-	return ok
 }

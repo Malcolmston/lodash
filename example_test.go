@@ -40,3 +40,39 @@ func ExampleCamelCase() {
 	// fooBarBaz
 	// foo_bar_baz
 }
+
+// ExampleGet demonstrates deep-path access into a nested map using bracket and
+// dotted notation.
+func ExampleGet() {
+	data := map[string]any{
+		"user": map[string]any{
+			"roles": []any{"admin", "editor"},
+		},
+	}
+	role, _ := lodash.Get(data, "user.roles[0]")
+	fmt.Println(role)
+	// Output:
+	// admin
+}
+
+// ExampleChain demonstrates the lazy Seq wrapper terminated by Value.
+func ExampleChain() {
+	result := lodash.Chain([]int{1, 2, 3, 4}).
+		Thru(func(s []int) []int { return lodash.Filter(s, func(n int) bool { return n%2 == 0 }) }).
+		Thru(func(s []int) []int { return lodash.Map(s, func(n int) int { return n * n }) }).
+		Value()
+	fmt.Println(result)
+	// Output:
+	// [4 16]
+}
+
+// ExampleFlow demonstrates composing transforms left to right.
+func ExampleFlow() {
+	pipeline := lodash.Flow(
+		func(n int) int { return n + 1 },
+		func(n int) int { return n * 2 },
+	)
+	fmt.Println(pipeline(3))
+	// Output:
+	// 8
+}
