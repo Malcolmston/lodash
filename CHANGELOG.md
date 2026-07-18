@@ -4,6 +4,40 @@ All notable changes to this project are documented in this file. The format is
 based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this
 project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.3.0] - 2026-07-18
+
+### Added
+
+Expanded the library from **269** to **354** exported identifiers (+85, a ~32%
+increase), closing further gaps toward lodash. All additions are
+standard-library-only, generics-based, fully documented, gofmt-clean and
+covered by deterministic known-answer tests (plus benchmarks for the
+performance-sensitive routines).
+
+- **Lang predicates & conversions** (`predicates.go`): `IsFunction`,
+  `IsRegExp`, `IsDate`, `IsBuffer`, `IsSafeInteger`, `IsLength`, `IsNull`,
+  `IsUndefined`, `IsObject`, `IsArrayLike`, `IsArrayLikeObject`, `ToLength`,
+  `IsEqualWith`, `IsMatchWith`.
+- **Object-as-collection helpers** (`collectionmap.go`), mirroring lodash's
+  collection methods that also accept objects: `EveryMap`, `SomeMap`,
+  `NoneMap`, `FindMap`, `FilterMap`, `RejectMap`, `MapToSlice`, `ReduceMap`,
+  `PartitionMap`, `GroupByMap`, `IncludesValue`, `MinByMap`, `MaxByMap`.
+- **Array gaps** (`arraymore.go`): `UniqWith`, `PullAllWith`, `ZipObjectDeep`,
+  `FlatMapDeep`, `FlatMapDepth`, `FillRange`.
+- **Function combinators** (`functionmore.go`): `CurryRight`, `CurryRight3`,
+  `Curry4`, `Rest`, `Delay`, `Defer`.
+- **Deep-object writes** (`objectmore.go`): `SetWith`, `UpdateWith`.
+- **Utilities & strings** (`utilmore.go`, `stringsmore.go`): `MatchesProperty`,
+  `ParseInt`, `ParseFloat`.
+- **Fluent chaining** (`chainslice.go`, `chainset.go`): `SliceSeq`/`ChainSlice`
+  for same-type slice pipelines (`Filter`, `Reject`, `Reverse`, `Take`,
+  `TakeRight`, `TakeWhile`, `Drop`, `DropRight`, `DropWhile`, `Tail`, `Initial`,
+  `Slice`, `Concat`, `ForEach`, `Tap`, `Shuffle`, `Head`, `Last`, `Nth`,
+  `Sample`, `Size`, `IsEmpty`, `Join`, `Chunk`) and `SetSeq`/`ChainSet` for
+  comparable-element set operations (`Uniq`, `Compact`, `Without`, `Union`,
+  `Intersection`, `Difference`, `Filter`, `Reverse`, `Includes`, `IndexOf`,
+  `Size`).
+
 ## [0.2.0] - 2026-07-17
 
 ### Added
