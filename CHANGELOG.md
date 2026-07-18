@@ -4,6 +4,10 @@ All notable changes to this project are documented in this file. The format is
 based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this
 project adheres to [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+- Upstream-parity: synced lodash v4.17.21 test vectors into `*_parity_test.go`; fixed `StartCase` to preserve interior letter case, made the case compounders (`CamelCase`/`PascalCase`/`SnakeCase`/`KebabCase`/`StartCase`/`LowerCase`/`UpperCase`) deburr letters and strip contraction apostrophes like lodash, and rewrote `Deburr` to cover the full Latin-1/Latin Extended-A tables, ligatures, and combining marks.
+
 ## [0.3.0] - 2026-07-18
 
 ### Added

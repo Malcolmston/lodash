@@ -48,14 +48,18 @@ func EscapeRegExp(s string) string {
 }
 
 // LowerCase converts s to space-separated lower case words, splitting on case,
-// digit and separator boundaries (see Words).
+// digit and separator boundaries. Like lodash's _.lowerCase it deburrs Latin
+// letters and removes contraction apostrophes before splitting (see
+// compoundWords), so e.g. LowerCase("À") yields "a".
 func LowerCase(s string) string {
-	return joinCase(Words(s), " ", strings.ToLower)
+	return joinCase(compoundWords(s), " ", strings.ToLower)
 }
 
-// UpperCase converts s to space-separated UPPER CASE words.
+// UpperCase converts s to space-separated UPPER CASE words. Like lodash's
+// _.upperCase it deburrs Latin letters and removes contraction apostrophes
+// before splitting (see compoundWords), so e.g. UpperCase("À") yields "A".
 func UpperCase(s string) string {
-	return joinCase(Words(s), " ", strings.ToUpper)
+	return joinCase(compoundWords(s), " ", strings.ToUpper)
 }
 
 func joinCase(words []string, sep string, transform func(string) string) string {
