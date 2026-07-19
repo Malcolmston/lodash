@@ -96,6 +96,8 @@ func Attempt[R any](fn func() R) (result R, err error) {
 
 type attemptError struct{ value any }
 
+// Error implements the error interface, returning the recovered non-error
+// panic value formatted as a string via ToString.
 func (e *attemptError) Error() string {
 	return ToString(e.value)
 }
