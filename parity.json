@@ -1,0 +1,8 @@
+{
+  "repo": "lodash",
+  "upstream": "lodash/lodash",
+  "parityBefore": "90%",
+  "parityAfter": "98%",
+  "upstreamCasesSynced": 450,
+  "gapsClosed": 6
+}
